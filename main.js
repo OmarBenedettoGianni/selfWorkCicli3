@@ -1,3 +1,4 @@
+/*
 let bevandaSelezionata;
 
 do {
@@ -15,4 +16,34 @@ do {
         default:
             console.log(`La bevandaSelezionata non è valida`)
     }
-} while (bevandaSelezionata <1 || bevandaSelezionata > 3);
+} while (bevandaSelezionata <1 || bevandaSelezionata > 3)
+*/
+// Dizionario che mappa le intenzioni dell'utente (normalizzate) al risultato finale
+const opzioniValide = {
+    "1": "Acqua",
+    "acqua": "Acqua",
+    "2": "Coca Cola",
+    "coca cola": "Coca Cola",
+    "cocacola": "Coca Cola",
+    "3": "Birra",
+    "birra": "Birra"
+};
+
+let inputUtente;
+let selezioneCompletata = false;
+
+do {
+    inputUtente = prompt("Scegli una bevanda digitando il numero o il nome:\n1 - Acqua\n2 - Coca Cola\n3 - Birra");
+
+    let inputNormalizzato = inputUtente.trim().toLowerCase();
+
+    let bevandaScelta = opzioniValide[inputNormalizzato];
+
+    if (bevandaScelta) {
+        console.log(`Hai selezionato ${bevandaScelta}`);
+        selezioneCompletata = true;
+    } else {
+        console.log(`Attenzione: "${inputUtente}" non è un'opzione valida. Riprova.`);
+    }
+
+} while (!selezioneCompletata);
